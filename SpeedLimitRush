@@ -1,0 +1,37 @@
+public class Little_car_frame extends JFrame {
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Little_car_frame frame = new Little_car_frame();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public Little_car_frame() {
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        getContentPane().add(new Little_car_panel());
+    }
+
+}
+
+public class Little_car_panel extends JPanel implements KeyListener {
+
+    private Car car1 = new Car();
+    private Timer timer1 = new Timer(1000, new TimerListener());
+    private ArrayList<Obstacle> list1 = new ArrayList<Obstacle>();
+    private Random rand1 = new Random();
+
+    public Little_car_panel() {
+        setBorder(BorderFactory.createLineBorder(Color.black));
+        setFocusable(true);
+        addKeyListener(this);
+        timer1.start();
+    }
